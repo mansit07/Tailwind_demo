@@ -5,17 +5,30 @@ import axios from "axios";
 import Card from "../components/card";
 import Link from "next/link";
 
+// Import hooks provided by react-redux
+import { useSelector, useDispatch } from "react-redux";
+// Import all actions and bind them
+import { getData } from "../redux/actions/userActions";
+
 export default function Users() {
     const [userlist, setuserlist] = useState([]);
+    const usersdata = useSelector((state) => state?.users?.usersdata);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getuserdata();
     }, []);
 
-    const getuserdata = () => {
-        axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
-            console.log(res);
+    const getuserdata =async () => {
+        // axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
+        //     console.log(res);
+        //     setuserlist(res.data);
+        // })
+        await axios.get("https://jsonplaceholder.typicode.com/users")
+        .then((res) => {
+            dispatch(getData(res.data))
             setuserlist(res.data);
+            console.log(res.data)
         })
     }
 
