@@ -18,12 +18,14 @@ const store = createStore(rootReducer, undefined, composedEnhancers)
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 // export const metadata = {
 //   title: "My demo",
 //   description: "Mansi's assignment",
 // };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body className={inter.className}>

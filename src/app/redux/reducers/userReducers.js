@@ -1,5 +1,5 @@
 const initialState = {
-    users: [],
+    uersData: [],
     loading: true
 }
 
@@ -11,7 +11,6 @@ const uersReducer = (state = initialState, action) => {
                 uersData: action.payload,
                 loading: false
             }
-
         // case "createPlayer":
         //     return {
         //         ... state,
